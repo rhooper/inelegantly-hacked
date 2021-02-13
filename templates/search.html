@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Search - {{ SITENAME|striptags }}
+{% endblock title %}
+
+{% block content %}
+
+
+
+    <div id="pelican_lunr_search_content"></div>
+    <script>
+        var idx = lunr(function () {
+            this.ref('name')
+            this.field('summary')
+
+            documents.forEach(function (doc) {
+                this.add(doc)
+            }, this)
+        })
+    </script>
+    <script src={{ SITE_URL }}/js/lunr.js></script>
+    <script src={{ SITE_URL }}/lunr-index.js></script>
+
+{% endblock content %}
+
