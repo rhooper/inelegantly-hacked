@@ -6,8 +6,6 @@
 
 {% block content %}
 
-
-
     <div id="lunr_search_content"></div>
     <script>
         var idx = lunr(function () {
@@ -19,7 +17,6 @@
             }, this)
         })
     </script>
-    <script src={{ SITE_URL }}/js/lunr.js></script>
     <script src={{ SITE_URL }}/lunr-index.js></script>
 
 {% endblock content %}
