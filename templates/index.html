@@ -6,14 +6,9 @@
 
 {% block meta_tags_in_head %}
 {{ super() }}
-{% from '_includes/_defaults.html' import LANDING_PAGE_TITLE, FEATURED_IMAGE, SITE_DESCRIPTION with context %}
-{% if LANDING_PAGE_TITLE %}
-<meta property="og:title" content="{{ LANDING_PAGE_TITLE|e }}"/>
-<meta name="twitter:title" content="{{ LANDING_PAGE_TITLE|e }}">
-{% else %}
+
 <meta property="og:title" content="{{ SITENAME|striptags|e }}"/>
 <meta name="twitter:title" content="{{ SITENAME|striptags|e }}">
-{% endif %}
 <meta property="og:url" content="{{ SITEURL }}" />
 <meta property="og:site_name" content="{{ SITENAME|striptags|e }}" />
 <meta property="og:article:author" content="{{ AUTHOR }}" />
@@ -25,22 +20,15 @@
 <meta property="og:description" content="{{ SITE_DESCRIPTION|e }}" />
 <meta name="twitter:description" content="{{ SITE_DESCRIPTION|e }}">
 {% endif %}
-<meta name="keywords" content="{% for tag, _ in tags|sort %} {{ tag }}, {% endfor %}{% for category, _ in categories|sort %} {{ category }}, {% endfor %}" />
+<meta name="keywords" content="{% for tag, _ in tags|sort %} {{ tag }}, {% endfor %}" />
 {% endblock meta_tags_in_head %}
 
 {% block content %}
-{% from '_includes/_defaults.html' import LANDING_PAGE_TITLE, PROJECTS, PROJECTS_TITLE with context %}
-
-{% set landing_page = namespace(page=false) %}
-{% for p in hidden_pages if p.slug == "landing-page-about-hidden" %}
-{% set landing_page.page = p %}
-{% endfor %}
-
 <div class="row">
     {% if articles %}
     {% set css_class = 'col-md-auto' %}
     {% endif %}
-    {% from '_includes/_defaults.html' import RECENT_ARTICLES_COUNT, ARCHIVES_URL, CATEGORIES_URL with context %}
+    {% from '_includes/_defaults.html' import RECENT_ARTICLES_COUNT, ARCHIVES_URL with context %}
     <div class="row justify-content-md-center">
         <div class="{{ css_class }}">
                 {% for article in articles_page.object_list %}

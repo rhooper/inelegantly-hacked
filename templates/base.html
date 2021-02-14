@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block head_links %}
-        {% if 'pelican-webassets' in PLUGINS and not DEBUG_CSS %}
+        {% if 'pelican-webassets' in PLUGINS and not DEV_CSS %}
         {% include '_includes/minify_css.html' with context %}
         {% else %}
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/bootstrap.css" media="screen">
@@ -19,12 +19,6 @@
 
         {% if CLAIM_GOOGLE %}
         {% include '_includes/claim_google.html' with context %}
-        {% endif %}
-        {% if CLAIM_BING %}
-        {% include '_includes/claim_bing.html' with context %}
-        {% endif %}
-        {% if CLAIM_YANDEX %}
-        {% include '_includes/claim_yandex.html' with context %}
         {% endif %}
         {% if article and article.author %}
         <meta name="author" content="{{ article.author }}" />
@@ -54,7 +48,7 @@
         {% include '_includes/analytics.html' %}
     </head>
     <body>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="{{ SITEURL }}/">{{ SITENAME }}</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,13 +102,14 @@
 
         {% include '_includes/footer.html' %}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-        <script src={{ SITEURL }}/theme/js/lunr.js></script>
-        <script src={{ SITEURL }}/lunr-index.js></script>
+        <script src="{{ SITEURL }}/theme/js/lunr.js"></script>
+        <script src="{{ SITEURL }}/lunr-index.js"></script>
         <script>
             function validateForm(query)
             {
                 return (query.length > 0);
             }
         </script>
+
     </body>
 </html>
