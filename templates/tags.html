@@ -12,7 +12,7 @@ All tags used in the {{ SITENAME|striptags|e }} blog.
 {% from '_includes/_defaults.html' import TAGS_URL with context %}
 <div class="article">
 
-    <header class="page-header col-md-8 col-md-offset-2">
+    <header class="page-header">
     <h1><a href="{{ SITEURL }}/{{ TAGS_URL }}">All Post Tags</a></h1>
     </header>
 
@@ -62,27 +62,7 @@ All tags used in the {{ SITENAME|striptags|e }} blog.
 
 {% block script %}
 <script>
-    function filterList() {
-        var input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('tag-input');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("list-of-tags");
-        li = ul.getElementsByTagName('li');
-
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            let filters = filter.split(" ")
-            filters = filters.filter(f => f.length)
-
-            let shouldDisplay = true
-            filters.forEach(filt => {
-                shouldDisplay = shouldDisplay && txtValue.toUpperCase().includes(filt)
-            })
-
-            li[i].style.display = (shouldDisplay || filters.length === 0) ? "" : "none";
-        }
-    }
+{#tags.js here#}
 </script>
 
 {% endblock script %}

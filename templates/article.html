@@ -34,12 +34,11 @@
         </h1>
     </header>
 
-<div class="row">
     {% include 'article_infos.html' %}
-        <div class="col-md-auto col-md-offset-2 article-content">
+
+        <div class="article-content">
             <br />
             {{ article.content }}
-
 
 
             {% if article.prev_article or article.next_article %}
@@ -70,7 +69,6 @@
 
             {% endif %}
         </div>
-</div>
 </div>
 
 </article>
