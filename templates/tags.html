@@ -8,34 +8,14 @@ All Tags · {{ super() }}
 All tags used in the {{ SITENAME|striptags|e }} blog.
 {% endblock head_description %}
 
-{% block meta_tags_in_head %}
-{{ super() }}
-<meta property="og:title" content="All Tags · {{ SITENAME|striptags|e }}"/>
-<meta name="twitter:title" content="All Tags · {{ SITENAME|striptags|e }}">
-{% from '_includes/_defaults.html' import FEATURED_IMAGE, TAGS_URL with context %}
-<meta property="og:url" content="{{ SITEURL }}/{{ TAGS_URL }}" />
-<meta property="og:description" content="All tags used in the {{ SITENAME|striptags|e }} blog" />
-<meta name="twitter:description" content="All tags used in the {{ SITENAME|striptags|e }} blog">
-<meta property="og:site_name" content="{{ SITENAME|striptags|e }}" />
-<meta property="og:article:author" content="{{ AUTHOR }}" />
-{% if FEATURED_IMAGE %}
-<meta property="og:image" content="{{ FEATURED_IMAGE }}" />
-<meta name="twitter:image" content="{{ FEATURED_IMAGE }}" >
-{% endif %}
-{% endblock meta_tags_in_head %}
-
-{% block feed_links %}
-{{ super() }}
-{% include '_includes/feeds_tags.html' %}
-{% endblock feed_links %}
-
 {% block content %}
 {% from '_includes/_defaults.html' import TAGS_URL with context %}
-<div class="row">
+<div class="article">
+
     <header class="page-header col-md-8 col-md-offset-2">
     <h1><a href="{{ SITEURL }}/{{ TAGS_URL }}">All Post Tags</a></h1>
     </header>
-</div>
+
 <div class="row">
     <div class="row justify-content-md-center">
         <form class="d-flex">
@@ -77,7 +57,7 @@ All tags used in the {{ SITENAME|striptags|e }} blog.
         {% endfor %}
     </div>
 </div>
-
+</div>
 {% endblock content %}
 
 {% block script %}

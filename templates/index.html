@@ -4,37 +4,15 @@
 {{ super() }}
 {% endblock title %}
 
-{% block meta_tags_in_head %}
-{{ super() }}
-
-<meta property="og:title" content="{{ SITENAME|striptags|e }}"/>
-<meta name="twitter:title" content="{{ SITENAME|striptags|e }}">
-<meta property="og:url" content="{{ SITEURL }}" />
-<meta property="og:site_name" content="{{ SITENAME|striptags|e }}" />
-<meta property="og:article:author" content="{{ AUTHOR }}" />
-{% if FEATURED_IMAGE %}
-<meta property="og:image" content="{{ FEATURED_IMAGE }}" />
-<meta name="twitter:image" content="{{ FEATURED_IMAGE }}" >
-{% endif %}
-{% if SITE_DESCRIPTION %}
-<meta property="og:description" content="{{ SITE_DESCRIPTION|e }}" />
-<meta name="twitter:description" content="{{ SITE_DESCRIPTION|e }}">
-{% endif %}
-<meta name="keywords" content="{% for tag, _ in tags|sort %} {{ tag }}, {% endfor %}" />
-{% endblock meta_tags_in_head %}
-
 {% block content %}
-<div class="row">
     {% if articles %}
-    {% set css_class = 'col-md-auto' %}
-    {% endif %}
     {% from '_includes/_defaults.html' import RECENT_ARTICLES_COUNT, ARCHIVES_URL with context %}
     <div class="row justify-content-md-center">
-        <div class="{{ css_class }}">
+        <div class="col-md-auto">
                 {% for article in articles_page.object_list %}
                     {% if loop.first and not articles_page.has_previous() %}
                         <aside id="featured" class="body">
-                            <article>
+                            <article class="article">
                                 <header class="page-header">
                                     <h1><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
                                 </header>
@@ -44,35 +22,47 @@
                                     {{ article.content }}
                                 </div>
                             </article>
+                            {% if loop.length == 1 %}
+                                {% include 'pagination.html' %}
+                            {% endif %}
                         </aside><!-- /#featured -->
-                    {% endif %}
-                {% endfor %}
-
+                        {% if loop.length > 1 %}
+                            <div class="recent-post-list">
+                            <h3 id="recent-posts">Recent Posts</h3>
+                            <ol id="posts-list" class="hfeed">
+                        {% endif %}
+                        {# other items #}
+                    {% else %}
+            {% if loop.first and articles_page.has_previous %}
         <br />
-        <h3 id="recent-posts">Recent Posts</h3>
-        <div class="recent-posts">
-            {% for article in articles %}
-            {% if loop.index0 < RECENT_ARTICLES_COUNT %}
-            <div itemscope class="recent-posts-article">
-                <a href="{{ SITEURL }}/{{ article.url }}">
-                    <h5>{{ article.title }}</h5>
-                    {% if article.subtitle %}
-                    <small class="subtitle">
-                        {{ article.subtitle }}
-                    </small>
-                    {% endif %}
-                </a>
-                {% if RECENT_ARTICLE_SUMMARY %}
-                    <p>{{ article.summary }}</p>
+                    <div id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="{{ articles_paginator.per_page -1 }}">
                 {% endif %}
-                <div class="recent_post_info">
-                    {% include 'article_infos.html' %}
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %}
+                    <header>
+                        <h5><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                               title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h5>
+                    </header>
+
+                        {% include 'article_infos.html' %}
+                    <div class="read-more">
+                        <a class="readmore" href="{{ SITEURL }}/{{ article.url }}">read more</a>
+                    </div>
+                    <div class="recent-post-summary">
+                        {{ article.summary }}
+                    </div><!-- /.entry-content -->
+
+                {% if loop.last %}
+                    </ol><!-- /#posts-list -->
+                    {% if loop.last and (articles_page.has_previous()
+                    or not articles_page.has_previous() and loop.length > 1) %}
+                        {% include 'pagination.html' %}
+                    {% endif %}
+                    </div><!-- /#content -->
+                    {% endif %}
+                    {% endif %}
+    {% endfor %}
         </div>
         </div>
-    </div>
-</div>
+
+{% endif %}
 {% endblock content %}

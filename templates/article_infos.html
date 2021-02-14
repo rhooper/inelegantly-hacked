@@ -1,4 +1,4 @@
-<div class="post_info">
+<div class="post-info">
         <span>Posted by </span>
         {% if article.author and DISPLAY_AUTHOR_ON_POSTINFO %}
         	<span><a class="url fn" href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a></span>
@@ -12,7 +12,4 @@
                 {% endfor %}
             </span>
         {% endif %}
-{#{% include 'taglist.html' %}#}
-{#{% import 'translations.html' as translations with context %}#}
-{#{{ translations.translations_for(article) }}#}
 </div><!-- /.post-info -->
