@@ -17,17 +17,6 @@
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
-        {% if CLAIM_GOOGLE %}
-        {% include '_includes/claim_google.html' with context %}
-        {% endif %}
-        {% if article and article.author %}
-        <meta name="author" content="{{ article.author }}" />
-        {% elif page and page.author %}
-        <meta name="author" content="{{ page.author }}" />
-        {% else %}
-        <meta name="author" content="{{ AUTHOR }}" />
-        {% endif %}
-
         {% from '_includes/_defaults.html' import SITE_DESCRIPTION with context %}
         {% if SITE_DESCRIPTION %}
         <meta name="description" content="{% block head_description %}{{ SITE_DESCRIPTION|e }}{% endblock head_description %}" />
@@ -41,11 +30,7 @@
         <meta name="twitter:card" content="summary">
         {% endblock meta_tags_in_head %}
         <title>{% block title %}{{ SITENAME|striptags|e }}{% endblock title %}</title>
-        {% include '_includes/favicon_links.html' %}
-        {% block feed_links %}
-        {% include '_includes/feeds.html' %}
-        {% endblock feed_links %}
-        {% include '_includes/analytics.html' %}
+
     </head>
     <body>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -100,7 +85,7 @@
             </div>
 
 
-        {% include '_includes/footer.html' %}
+        {% include 'footer.html' %}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         <script src="{{ SITEURL }}/theme/js/lunr.js"></script>
         <script src="{{ SITEURL }}/lunr-index.js"></script>

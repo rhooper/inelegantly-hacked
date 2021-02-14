@@ -1,0 +1,23 @@
+<footer>
+    {% from '_includes/_defaults.html' import SITE_LICENSE with context %}
+    {% if SITE_LICENSE %}
+    <div>
+        {{ SITE_LICENSE }}
+    </div>
+    {% endif %}
+
+    {% from '_includes/_defaults.html' import SITESUBTITLE with context %}
+    {% if SITESUBTITLE %}
+    <div>
+        <span class="site-name">{{ SITENAME }}</span> - {{ SITESUBTITLE }}
+    </div>
+    {% endif %}
+    {% include '_includes/social_links.html' %}
+
+
+    <div id="footer-info">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        <br />
+        Theme: <a href="https://github.com/kattni/intrinsic" title="Intrinsic on GitHub" target="_blank" rel="nofollow noopener noreferrer">Intrinsic</a>
+    </div>
+</footer>

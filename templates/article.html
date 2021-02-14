@@ -18,11 +18,10 @@
 {% if article.tags or article.category or article.keywords %}
 <meta name="keywords" content="{{ [article.tags|join(', '), article.category, article.keywords]|join(', ') }}" />
 {% endif %}
-
+{% endblock meta_tags_in_head %}
 {% block content %}
-<article itemscope>
-<div class="row">
-    <header class="page-header col-md-auto">
+<article itemscope class="article">
+    <header class="page-header">
         <h1>
             <a href="{{ SITEURL }}/{{ article.url }}">
                 {{ article.title }}
@@ -34,37 +33,44 @@
             </a>
         </h1>
     </header>
-</div>
 
-<div class="row">
     {% include 'article_infos.html' %}
-        <div class="col-md-auto col-md-offset-2 article-content">
+
+        <div class="article-content">
             <br />
             {{ article.content }}
 
 
-
             {% if article.prev_article or article.next_article %}
-                <ul class="neighbors">
+                <div class="row justify-content-md-center">
+                    <div class="col col-lg-auto">
                     {% if article.prev_article %}
+                        <ul class="neighbors">
                         <li class="previous-article">&laquo;
                             <a href="{{ SITEURL }}/{{ article.prev_article.url}}">
                                 {{ article.prev_article.title }}
                             </a>
                         </li>
+                        </ul>
                     {% endif %}
+                    </div>
+                    <div class="col"></div>
+                <div class="col col-lg-auto">
                     {% if article.next_article %}
+                        <ul class="neighbors">
                         <li class="next-article">
                             <a href="{{ SITEURL }}/{{ article.next_article.url}}">
                                 {{ article.next_article.title }}
                             </a>
                             &raquo;</li>
+                        </ul>
                     {% endif %}
-                </ul>
+                </div>
 
             {% endif %}
         </div>
 </div>
+
 </article>
 {% endblock content %}
 

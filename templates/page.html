@@ -19,12 +19,11 @@
 {% endblock meta_tags_in_head %}
 
 {% block content %}
-<article>
-<div class="row">
-    <header class="page-header col-md-8 col-md-offset-2">
+<article class="article">
+    <header class="page-header">
     <h1><a href="{{ SITEURL }}/{{ page.url }}"> {{ page.title }} {% if page.subtitle %} <small> {{ page.subtitle }} </small> {% endif %} </a></h1>
     </header>
-</div>
+
 
 <div class="row">
     {% if page.toc %}
