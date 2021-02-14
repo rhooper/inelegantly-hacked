@@ -2,10 +2,11 @@
 
 [Inelegantly Hacked][demo] is a theme for the static site generator [Pelican][].
 
+This theme is currently under development.
 
 ## Theme Demo
 
-The theme is actively being used on [kattni.com][demo].
+The theme is actively being used [kattni.com][demo].
 
 
 [pelican]: https://getpelican.com/

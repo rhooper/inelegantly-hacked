@@ -16,33 +16,17 @@ Page does not exist at {{ SITENAME|striptags|e }} blog.
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <p>Sorry, but the page you are looking for cannot be found. It seems that the page you were trying to reach doesn't exist, or may be it has just moved, or it no longer exists.</p>
-        <p>The best thing to do is to use the search form or start again from the <a href="{{ SITEURL }}">home page</a>.</p>
-        <div class="input-group">
-            {% from '_includes/_defaults.html' import SEARCH_URL with context %}
-            <form action="{{ SITEURL }}/{{ SEARCH_URL }}" onsubmit="return validateForm(this.elements['q'].value)">
-                <input type="text" class="col-md-12" placeholder="Search" name="q" id="tipue_search_input_404">
-                <button class="btn btn-default" type="submit">Search</button>
-            </form>
-        </div>
+        <p>There's nothing here. Except for this page.</p>
+        <p>You can try searching for something or head back to the <a href="{{ SITEURL }}">home page</a>.</p>
+        <form class="d-flex" action="{{ SITE_URL }}/search" onsubmit="return validateForm(this.elements['q'].value);">
+            <input class="form-control rounded-pill mx-2" id="lunr_search_input" type="search" placeholder="Search" aria-label="Search" name="q">
+        </form>
     </div>
 </div>
 
-<script type="text/javascript">
-    // Get Current location as the initial search item
-    var newurl = (' ' + window.location.pathname).slice(1);
+    <script>
+    {#Something here!#}
+    </script>
 
-    // Replace "/" in path into spaces
-    var newurl = newurl.replace(/\//g, ' ');
-
-    // Remove html extension
-    var newurl = newurl.replace(/.html/g, ' ');
-
-    // Replace - by ' '
-    var newurl = newurl.replace(/\-/g, ' ');
-
-    // Fill search field with resulting string
-    document.getElementById('tipue_search_input_404').value = newurl;
-</script>
 
 {% endblock content %}

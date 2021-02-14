@@ -16,8 +16,6 @@
 <meta name="keywords" content="{{ page.keywords }}" />
 {% endif %}
 
-{% from '_includes/smo_metadata.html' import smo_metadata with context %}
-{{ smo_metadata(page) }}
 {% endblock meta_tags_in_head %}
 
 {% block content %}
@@ -42,15 +40,8 @@
             {% endif %}
 
             {{ page.content }}
-            {% from '_includes/comments.html' import comments_section with context %}
-            {{ comments_section(page) }}
         </div>
     </div>
     </article>
     {% endblock content %}
 
-    {% block script %}
-    {{ super() }}
-    {% from '_includes/comments.html' import comments_script with context %}
-    {{ comments_script() }}
-    {% endblock script %}
