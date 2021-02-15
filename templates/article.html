@@ -10,17 +10,9 @@
 {% endif %}
 {% endblock head_description %}
 
-{% block meta_tags_in_head %}
-{% if article.redirect %}
-<meta http-equiv="refresh" content="0;URL={{ article.redirect }}" />
-{% endif %}
-{{ super() }}
-{% if article.tags or article.category or article.keywords %}
-<meta name="keywords" content="{{ [article.tags|join(', '), article.category, article.keywords]|join(', ') }}" />
-{% endif %}
-{% endblock meta_tags_in_head %}
 {% block content %}
-<article itemscope class="article">
+<div class="row justify-content-md-center">
+<article class="article">
     <header class="page-header">
         <h1>
             <a href="{{ SITEURL }}/{{ article.url }}">
@@ -70,7 +62,7 @@
             {% endif %}
         </div>
 </div>
-
 </article>
+    </div>
 {% endblock content %}
 
