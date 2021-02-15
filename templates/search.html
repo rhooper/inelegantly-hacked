@@ -6,15 +6,20 @@
 
 {% block content %}
 
+    <div id="search_content"></div>
 
-<div class="article">
-    <div id="lunr_search_content">
-      <ul class="list-group">
-        <li class="list-group-item"></li>
-      </ul>
-    </div>
-</div>
-    <script src="{{ SITE_URL }}/lunr-index.js"></script>
-    <script src="{{ SITE_URL }}/theme/js/intrinsic.js"></script>
+    <script>
+        var idx = lunr(function () {
+            this.ref('name')
+            this.field('summary')
+
+            documents.forEach(function (doc) {
+                this.add(doc)
+            }, this)
+        })
+    </script>
+    <script src={{ SITE_URL }}/js/lunr.js></script>
+    <script src={{ SITE_URL }}/lunr-index.js></script>
+
 {% endblock content %}
 

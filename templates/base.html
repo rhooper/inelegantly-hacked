@@ -1,101 +1,100 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% block head_links %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head_links %}
         {% if 'pelican-webassets' in PLUGINS and not DEV_CSS %}
-        {% include '_includes/minify_css.html' with context %}
+            {% include 'minify_css.html' with context %}
         {% else %}
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/bootstrap.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/inelegantly_hacked.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/custom.css" media="screen">
+            <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/bootstrap.css" media="screen">
+            <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" media="screen">
+            <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/intrinsic.css" media="screen">
+            <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/custom.css" media="screen">
         {% endif %}
-        {% endblock head_links %}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    {% endblock head_links %}
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
-        {% from '_includes/_defaults.html' import SITE_DESCRIPTION with context %}
-        {% if SITE_DESCRIPTION %}
-        <meta name="description" content="{% block head_description %}{{ SITE_DESCRIPTION|e }}{% endblock head_description %}" />
-        {% endif %}
-        {% block meta_tags_in_head %}
-        {% from '_includes/_defaults.html' import TWITTER_USERNAME with context %}
-        {% if TWITTER_USERNAME %}
-        <meta name="twitter:creator" content="@{{ TWITTER_USERNAME }}">
-        {% endif %}
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary">
-        {% endblock meta_tags_in_head %}
-        <title>{% block title %}{{ SITENAME|striptags|e }}{% endblock title %}</title>
+    <title>{% block title %}{{ SITENAME|striptags|e }}{% endblock title %}</title>
 
-    </head>
-    <body>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="{{ SITEURL }}/">{{ SITENAME }}</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                        <ul class="navbar-nav mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href=
-                                   {% if SITEURL %}#}
-                                   {{ SITEURL }}
-                                   {% else %}
-                                   "/"
-                                   {% endif %}
-                                >Home</a>
-                            </li>
-                                {% if DISPLAY_PAGES_ON_MENU %}
-                                {% for p in pages %}
-                                <li {% if p == page %} class="active"{% endif %}><a class="nav-link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-                                {% endfor %}
-                                {% endif %}
-                                <li {% if page_name == 'tags' %} class="active"{% endif %}><a class="nav-link" href="{{ SITEURL }}/{{ TAGS_URL }}">Tags</a></li>
-                                <li {% if page_name == 'archives' %} class="active"{% endif %}><a class="nav-link" href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"">
-                                    Contact
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    {% for name, link in SOCIAL %}
-                                        <li><a class="dropdown-item" href="{{ link }}">{{ name }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                        </ul>
-                        <iframe src="https://github.com/sponsors/kattni/button" title="Sponsor kattni" height="35" width="116" style="border: 0;"></iframe>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href=
+                            {% if SITEURL %}#}
+                                {{ SITEURL }}
+                            {% else %}
+                                "/"
+                            {% endif %}
+                    >Home</a>
+                </li>
+                {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for p in pages %}
+                        <li {% if p == page %} class="active"{% endif %}><a class="nav-link"
+                                                                            href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+                <li {% if page_name == 'tags' %} class="active"{% endif %}><a class="nav-link"
+                                                                              href="{{ SITEURL }}/{{ TAGS_URL }}">Tags</a>
+                </li>
+                <li {% if page_name == 'archives' %} class="active"{% endif %}><a class="nav-link"
+                                                                                  href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false"">
+                    Contact
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        {% for name, link in SOCIAL %}
+                            <li><a class="dropdown-item" href="{{ link }}">{{ name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            <iframe src="https://github.com/sponsors/kattni/button" title="Sponsor kattni" height="35" width="116"
+                    style="border: 0;"></iframe>
+            <form class="d-flex" action="{{ SITE_URL }}/search"
+                  onsubmit="return validateForm(this.elements['q'].value);">
+                <input class="form-control rounded-pill mx-2" id="lunr_search_input" type="search" placeholder="Search"
+                       aria-label="Search">
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row justify-content-md-center">
 
-                        <div class="dropdown">
-                          <form class="form-inline d-flex">
-                              <input class="form-control rounded-pill mx-2"  data-bs-toggle="dropdown" id="lunr_search_input" type="search" placeholder="Search" aria-label="Search" name="q">
-                            <div class="dropdown-menu" id="search-results" aria-labelledby="lunr_search_input">
-                              <ul class='list-group'></ul>
-                            </div>
-                          </form>
-                        </div>
+        {% block content %}
+        {% endblock content %}
 
-                    </div>
-                </div>
-            </nav>
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col">
-                        {% block content %}
-                        {% endblock content %}
-                    </div>
-                </div>
-            </div>
+    </div>
+</div>
 
 
-        {% include 'footer.html' %}
-        <script src="{{ SITEURL }}/theme/js/bootstrap.js"></script>
-        <script src="{{ SITEURL }}/lunr-index.js"></script>
-        <script src="{{ SITEURL }}/theme/js/intrinsic.js"></script>
+{% include 'footer.html' %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+<script src="{{ SITEURL }}/theme/js/lunr.js"></script>
+<script src="{{ SITEURL }}/lunr-index.js"></script>
+<script>
+    function validateForm(query) {
+        return (query.length > 0);
+    }
+</script>
 
-    </body>
+</body>
 </html>

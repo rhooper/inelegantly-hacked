@@ -1,68 +1,71 @@
 {% extends 'base.html' %}
 
 {% block title %}
-All Tags · {{ super() }}
+    All Tags · {{ super() }}
 {% endblock title %}
 
 {% block head_description %}
-All tags used in the {{ SITENAME|striptags|e }} blog.
+    All tags used in the {{ SITENAME|striptags|e }} site.
 {% endblock head_description %}
 
 {% block content %}
-{% from '_includes/_defaults.html' import TAGS_URL with context %}
-<div class="article">
 
-    <header class="page-header">
-    <h1><a href="{{ SITEURL }}/{{ TAGS_URL }}">All Post Tags</a></h1>
-    </header>
+    <div class="col-md-auto">
+        <div class="content">
 
-<div class="row">
-    <div class="row justify-content-md-center">
-        <form class="d-flex">
-            <input type="text" class="form-control rounded-pill mx-2" id="tag-input" placeholder="Find a tag" onkeyup="filterList()" aria-label="Search">
-        </form>
-        <ul class="list-of-tags">
-            {% for tag, articles in tags|sort %}
-            {% set num = articles|count %}
-            <li>
-            <a href="#{{ tag.slug }}-ref">{{ tag }}<span><sup>{{ num }}</sup></span></a>
-            </li>
-            {% endfor %}
-        </ul>
+            <header class="page-header">
+                <h1><a href="{{ SITEURL }}/{{ TAGS_URL }}">All Post Tags</a></h1>
+            </header>
+
+            <div class="row">
+                <div class="row justify-content-md-center">
+                    <form class="d-flex">
+                        <input type="text" class="form-control rounded-pill mx-2" id="tag-input"
+                               placeholder="Find a tag" onkeyup="filterList()" aria-label="Search">
+                    </form>
+                    <ul class="list-of-tags">
+                        {% for tag, articles in tags|sort %}
+                            {% set num = articles|count %}
+                            <li>
+                                <a href="#{{ tag.slug }}-ref">{{ tag }}<span><sup>{{ num }}</sup></span></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row justify-content-md-center">
+                    {% for tag, articles in tags|sort %}
+                        <h2 id="{{ tag.slug }}-ref" class="tag-title">{{ tag }}</h2>
+                        <ul class="list-articles-under-tag-category">
+                            {% for article in articles|sort(reverse = true, attribute = 'date') %}
+                                <li itemscope>
+                                    <a href="{{ SITEURL }}/{{ article.url }}">
+                                        {{ article.title }}
+                                        {% if article.subtitle %}
+                                            <small class="subtitle">
+                                                {{ article.subtitle }}
+                                            </small>
+                                        {% endif %}
+                                    </a>
+                                    <time itemprop="dateCreated" datetime="{{ article.date.isoformat() }}">
+                                        {{ article.locale_date }}
+                                    </time>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="row justify-content-md-center">
-        {% for tag, articles in tags|sort %}
-        <h2 id="{{ tag.slug }}-ref" class="tag-title">{{ tag }}</h2>
-        <ul class="list-articles-under-tag-category">
-            {% for article in articles|sort(reverse = true, attribute = 'date') %}
-            <li itemscope>
-                <a href="{{ SITEURL }}/{{ article.url }}">
-                    {{ article.title }}
-                    {% if article.subtitle %}
-                    <small class="subtitle">
-                        {{ article.subtitle }}
-                    </small>
-                    {% endif %}
-                </a>
-                <time itemprop="dateCreated" datetime="{{ article.date.isoformat() }}">
-                    {{ article.locale_date }}
-                </time>
-            </li>
-            {% endfor %}
-        </ul>
-
-        {% endfor %}
-    </div>
-</div>
-</div>
 {% endblock content %}
 
 {% block script %}
-<script>
-{#tags.js here#}
-</script>
+    <script>
+        {#tags.js here#}
+    </script>
 
 {% endblock script %}
