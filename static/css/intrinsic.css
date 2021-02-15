@@ -125,8 +125,10 @@ hr {
 
 /* Tags */
 h2.tag-title {
+    color: #380070;
     border-bottom: 1px solid #E0E0E0;
     margin-left: 25px;
+    padding-top: 10px;
 }
 
 .list-of-tags {
@@ -164,7 +166,7 @@ ul.list-articles-under-tag-category {
 /* Content */
 .content {
     background-color: #FFFFFF;
-    padding: 5px;
+    padding: 15px;
     border-radius: 8px;
     margin-top: 10px;
 }
@@ -173,7 +175,6 @@ ul.list-articles-under-tag-category {
 .page-header {
     color: #380070;
     border-bottom: 2px solid #380070;
-    padding-top: 10px;
     font-family: Garamond, serif;
     margin: 10px 0 30px 0;
     width: 100%;
@@ -304,7 +305,7 @@ div.read-more {
 
 .recent-post-list {
     background-color: #FFFFFF;
-    padding: 5px;
+    padding: 15px;
     border-radius: 8px;
     margin-top: 30px;
 }
