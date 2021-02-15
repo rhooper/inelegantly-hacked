@@ -1,18 +1,5 @@
 <footer>
-    {% from '_includes/_defaults.html' import SITE_LICENSE with context %}
-    {% if SITE_LICENSE %}
-    <div>
-        {{ SITE_LICENSE }}
-    </div>
-    {% endif %}
-
-    {% from '_includes/_defaults.html' import SITESUBTITLE with context %}
-    {% if SITESUBTITLE %}
-    <div>
-        <span class="site-name">{{ SITENAME }}</span> - {{ SITESUBTITLE }}
-    </div>
-    {% endif %}
-    {% include '_includes/social_links.html' %}
+    {% include 'social_links.html' %}
 
 
     <div id="footer-info">

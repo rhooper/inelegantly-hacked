@@ -132,6 +132,10 @@ h2.tag-title {
     float: none;
     line-height: 28px;
 }
+ul.list-articles-under-tag-category {
+     list-style: none outside none;
+     margin: 0 0 10px 25px;
+ }
 /* Content */
 .content {
     background-color: #FFFFFF;

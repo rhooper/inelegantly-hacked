@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block head_links %}
         {% if 'pelican-webassets' in PLUGINS and not DEV_CSS %}
-        {% include '_includes/minify_css.html' with context %}
+        {% include 'minify_css.html' with context %}
         {% else %}
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/bootstrap.css" media="screen">
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" media="screen">
@@ -17,18 +17,6 @@
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
-        {% from '_includes/_defaults.html' import SITE_DESCRIPTION with context %}
-        {% if SITE_DESCRIPTION %}
-        <meta name="description" content="{% block head_description %}{{ SITE_DESCRIPTION|e }}{% endblock head_description %}" />
-        {% endif %}
-        {% block meta_tags_in_head %}
-        {% from '_includes/_defaults.html' import TWITTER_USERNAME with context %}
-        {% if TWITTER_USERNAME %}
-        <meta name="twitter:creator" content="@{{ TWITTER_USERNAME }}">
-        {% endif %}
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary">
-        {% endblock meta_tags_in_head %}
         <title>{% block title %}{{ SITENAME|striptags|e }}{% endblock title %}</title>
 
     </head>

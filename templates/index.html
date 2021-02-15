@@ -6,7 +6,6 @@
 
 {% block content %}
     {% if articles %}
-    {% from '_includes/_defaults.html' import RECENT_ARTICLES_COUNT, ARCHIVES_URL with context %}
         <div class="col-md-auto">
                 {% for article in articles_page.object_list %}
                     {% if loop.first and not articles_page.has_previous() %}
