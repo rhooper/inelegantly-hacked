@@ -10,5 +10,5 @@ The theme is actively being used [kattni.com][demo].
 
 
 [pelican]: https://getpelican.com/
-[repository]: https://github.com/kattni/inelegantly-hacked
+[repository]: https://github.com/kattni/intrinsic
 [demo]: https://kattni.com
