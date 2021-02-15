@@ -6,10 +6,8 @@
 
 {% block content %}
 
+    <div id="search_content"></div>
 
-<div class="content">
-    <div id="lunr_search_content"></div>
-</div>
     <script>
         var idx = lunr(function () {
             this.ref('name')
