@@ -1,2 +1,6 @@
 import './lib/search';
-// import './tags';
+import './lib/tags';
+
+// j('#lunr_search_input').change(function (e) {
+//
+// })

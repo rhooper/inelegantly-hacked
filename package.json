@@ -7,13 +7,18 @@
     "@babel/preset-env": "^7.12.16",
     "@popperjs/core": "^2.6.0",
     "bootstrap": "^5.0.0-beta2",
-    "elasticlunr": "^0.9.5",
-    "elasticlunr-search-widget": "https://github.com/amihaiemil/elasticlunr-search-widget.git",
     "gulp": "^4.0.2",
+    "jquery": "^3.5.1",
     "stylelint": "^13.10.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-scss": "^3.19.0",
     "vinyl-named": "^1.1.0",
     "webpack-stream": "^6.1.2"
+  },
+  "scripts": {
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "lunr": "^2.3.9"
   }
 }
