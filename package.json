@@ -4,10 +4,12 @@
   "license": "Apache-2.0",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
+    "@babel/core": "^7.12.16",
     "@babel/preset-env": "^7.12.16",
     "@popperjs/core": "^2.6.0",
     "bootstrap": "^5.0.0-beta2",
     "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "jquery": "^3.5.1",
     "stylelint": "^13.10.0",
     "stylelint-config-recommended": "^3.0.0",
@@ -19,6 +21,7 @@
     "build": "gulp build"
   },
   "dependencies": {
+    "gulp-clean-css": "^4.3.0",
     "lunr": "^2.3.9"
   }
 }

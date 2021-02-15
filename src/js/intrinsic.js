@@ -1,6 +1,6 @@
 import './lib/search';
 import './lib/tags';
 
-// j('#lunr_search_input').change(function (e) {
-//
-// })
+function validateForm(query) {
+    return (query.length > 0);
+}
