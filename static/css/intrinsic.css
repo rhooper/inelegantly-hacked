@@ -320,3 +320,6 @@ table.code-highlighttable tr td:first-child pre {
     height: 30px;
     filter: grayscale(100%);
 }
+#feed-link {
+    padding-left: 5px;
+}
