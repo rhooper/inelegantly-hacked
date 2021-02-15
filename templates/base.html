@@ -10,7 +10,7 @@
         {% else %}
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/bootstrap.css" media="screen">
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/inelegantly_hacked.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/intrinsic.css" media="screen">
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/custom.css" media="screen">
         {% endif %}
         {% endblock head_links %}
@@ -70,17 +70,17 @@
                         </ul>
                         <iframe src="https://github.com/sponsors/kattni/button" title="Sponsor kattni" height="35" width="116" style="border: 0;"></iframe>
                         <form class="d-flex" action="{{ SITE_URL }}/search" onsubmit="return validateForm(this.elements['q'].value);">
-                            <input class="form-control rounded-pill mx-2" id="lunr_search_input" type="search" placeholder="Search" aria-label="Search" name="q">
+                            <input class="form-control rounded-pill mx-2" id="lunr_search_input" type="search" placeholder="Search" aria-label="Search">
                         </form>
                     </div>
                 </div>
             </nav>
             <div class="container">
                 <div class="row justify-content-md-center">
-{#                    <div class="col">#}
+
                         {% block content %}
                         {% endblock content %}
-{#                    </div>#}
+
                 </div>
             </div>
 

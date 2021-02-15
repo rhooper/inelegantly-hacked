@@ -19,7 +19,9 @@
 {% endblock meta_tags_in_head %}
 
 {% block content %}
-<article class="article">
+
+<div class="col-md-auto">
+<article class="content">
     <header class="page-header">
     <h1><a href="{{ SITEURL }}/{{ page.url }}"> {{ page.title }} {% if page.subtitle %} <small> {{ page.subtitle }} </small> {% endif %} </a></h1>
     </header>
@@ -42,5 +44,6 @@
         </div>
     </div>
     </article>
+    </div>
     {% endblock content %}
 

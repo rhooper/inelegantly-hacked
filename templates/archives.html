@@ -9,11 +9,9 @@
 {% endblock head_description %}
 
 {% block content %}
-    <div class="article">
+    <div class="col-md-auto">
+    <div class="content">
     <section>
-
-        {% from '_includes/_defaults.html' import ARCHIVES_URL with context %}
-
             <header class="page-header">
                 <h1><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">All Posts</a></h1>
             </header>
@@ -59,7 +57,7 @@
                     </div> <!-- end of year -->
                 {% endif %}
             {% endfor %}
-        </div>
     </section>
+    </div>
     </div>
 {% endblock content %}
